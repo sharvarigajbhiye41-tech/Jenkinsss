@@ -5,7 +5,7 @@ pipeline {
 
         stage('Hello') {
             steps {
-                echo This just prints a messsage'
+                echo 'This just prints a messsage'
                 sh 'echo This runs a real shell command'
                 sh 'pwd'
                 sh 'ls -la'
