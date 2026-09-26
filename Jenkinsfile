@@ -3,21 +3,9 @@ pipeline {
 
     stages {
 
-        stage('Build') {
+        stage('Hello') {
             steps {
-                echo 'Building application...'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing application...'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
+                echo 'Hello, Jenkins!'...'
             }
         }
     }
