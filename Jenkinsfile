@@ -16,7 +16,7 @@ pipeline {
             when { expression { params.ENVIRONMENT == 'production' } }
             steps { input message: 'Deploy to production?' }
      }
-        stage('Deploy') { steps { sh "echo Deploying to ${param.ENVIRONMENT}" } }
+        stage('Deploy') { steps { sh "echo Deploying to ${params.ENVIRONMENT}" } }
     }
 }
 
