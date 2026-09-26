@@ -4,18 +4,19 @@ pipeline {
         choice(name: 'ENVIRONMENT' , choices: ['staging','production'], description:'Target')
     }
     stages {
-        stage('Approve') {
-         steps {
-             input message: 'Deploy to production?'
-            }
+    stage('Build') { steps { sh 'echo building' } }
+    stage('Tests') {
+        parallel {
+            stage('Unit') { steps { sh 'echo Unit tests' } }
+            stge('Integration') { steps { sh 'echo Integration tests' } }
         }
     }
-    post {
-       success {
-         echo 'Pipeline succeeded'
-       }
-       failure {
-           echo 'Pipeline failed'
-       }
+        
+        stage('Approve') {
+            when { expression { paras.ENVIRONMENT == 'production' } }
+            steps { input message: 'Deploy to production?' }
+     }
+    stage('Deploy') { steps { steps { sh " echo Deploying to ${param.ENVIRONMENT}" } }
+    }
 }
 }
