@@ -8,7 +8,7 @@ pipeline {
     stage('Tests') {
         parallel {
             stage('Unit') { steps { sh 'echo Unit tests' } }
-            stge('Integration') { steps { sh 'echo Integration tests' } }
+            stage('Integration') { steps { sh 'echo Integration tests' } }
         }
     }
         
